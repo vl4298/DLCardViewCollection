@@ -20,10 +20,10 @@ class DLCardViewViewController: UIViewController {
     
     stackLayout = DLCardViewCollectionViewLayout()
     flowLayout = DLCardViewCollectionViewFlowLayout()
-    collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+    collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: stackLayout)
     collectionView.dataSource = self
     collectionView.delegate = self
-    
+    print(collectionView.center)
     collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
     //collectionView.backgroundColor = UIColor.blueColor()
     view.addSubview(collectionView)
@@ -54,8 +54,10 @@ extension DLCardViewViewController: UICollectionViewDataSource {
 extension DLCardViewViewController: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     if collectionView.collectionViewLayout.isKindOfClass(DLCardViewCollectionViewFlowLayout.self) {
+      stackLayout.invalidateLayout()
       collectionView.setCollectionViewLayout(stackLayout, animated: true)
     } else {
+      flowLayout.invalidateLayout()
       collectionView.setCollectionViewLayout(flowLayout, animated: true)
     }
   }

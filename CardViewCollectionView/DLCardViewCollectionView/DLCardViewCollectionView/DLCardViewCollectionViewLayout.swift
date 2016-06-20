@@ -17,6 +17,7 @@ class DLCardViewCollectionViewLayout: UICollectionViewLayout {
   let xOrigin: CGFloat = 20.0
   var translate: CGFloat = 20.0
   var scale: CGFloat = 0.9
+  let visibleItem = 4
   var attributes = [UICollectionViewLayoutAttributes]()
   
   override func prepareLayout() {
@@ -38,6 +39,10 @@ class DLCardViewCollectionViewLayout: UICollectionViewLayout {
       translate += 20.0
       yOrigin -= 20.0
       scale -= 0.1
+      
+      if index > visibleItem {
+        attribute.hidden = true
+      }
       
       attributes.append(attribute)
     }

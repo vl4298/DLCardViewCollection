@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		2899B6941D17DCB900E5AB5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899B6931D17DCB900E5AB5A /* AppDelegate.swift */; };
-		2899B6961D17DCB900E5AB5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899B6951D17DCB900E5AB5A /* ViewController.swift */; };
 		2899B6991D17DCB900E5AB5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2899B6971D17DCB900E5AB5A /* Main.storyboard */; };
 		2899B69B1D17DCB900E5AB5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2899B69A1D17DCB900E5AB5A /* Assets.xcassets */; };
 		2899B69E1D17DCB900E5AB5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2899B69C1D17DCB900E5AB5A /* LaunchScreen.storyboard */; };
+		2899B6A61D17DD8600E5AB5A /* DLCardViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899B6A51D17DD8600E5AB5A /* DLCardViewViewController.swift */; };
+		2899B6A81D17DDC400E5AB5A /* DLCardViewCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899B6A71D17DDC400E5AB5A /* DLCardViewCollectionViewLayout.swift */; };
+		2899B6AA1D17DDEC00E5AB5A /* DLCardViewCollectionViewLayoutAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899B6A91D17DDEC00E5AB5A /* DLCardViewCollectionViewLayoutAttribute.swift */; };
+		2899B6AC1D17DE0200E5AB5A /* DLCardViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899B6AB1D17DE0200E5AB5A /* DLCardViewCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2899B6901D17DCB900E5AB5A /* DLCardViewCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLCardViewCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2899B6931D17DCB900E5AB5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2899B6951D17DCB900E5AB5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2899B6981D17DCB900E5AB5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2899B69A1D17DCB900E5AB5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2899B69D1D17DCB900E5AB5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2899B69F1D17DCB900E5AB5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2899B6A51D17DD8600E5AB5A /* DLCardViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCardViewViewController.swift; sourceTree = "<group>"; };
+		2899B6A71D17DDC400E5AB5A /* DLCardViewCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCardViewCollectionViewLayout.swift; sourceTree = "<group>"; };
+		2899B6A91D17DDEC00E5AB5A /* DLCardViewCollectionViewLayoutAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCardViewCollectionViewLayoutAttribute.swift; sourceTree = "<group>"; };
+		2899B6AB1D17DE0200E5AB5A /* DLCardViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCardViewCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +60,11 @@
 		2899B6921D17DCB900E5AB5A /* DLCardViewCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				2899B6A51D17DD8600E5AB5A /* DLCardViewViewController.swift */,
+				2899B6A71D17DDC400E5AB5A /* DLCardViewCollectionViewLayout.swift */,
+				2899B6A91D17DDEC00E5AB5A /* DLCardViewCollectionViewLayoutAttribute.swift */,
+				2899B6AB1D17DE0200E5AB5A /* DLCardViewCollectionViewCell.swift */,
 				2899B6931D17DCB900E5AB5A /* AppDelegate.swift */,
-				2899B6951D17DCB900E5AB5A /* ViewController.swift */,
 				2899B6971D17DCB900E5AB5A /* Main.storyboard */,
 				2899B69A1D17DCB900E5AB5A /* Assets.xcassets */,
 				2899B69C1D17DCB900E5AB5A /* LaunchScreen.storyboard */,
@@ -135,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2899B6961D17DCB900E5AB5A /* ViewController.swift in Sources */,
 				2899B6941D17DCB900E5AB5A /* AppDelegate.swift in Sources */,
+				2899B6AC1D17DE0200E5AB5A /* DLCardViewCollectionViewCell.swift in Sources */,
+				2899B6A81D17DDC400E5AB5A /* DLCardViewCollectionViewLayout.swift in Sources */,
+				2899B6AA1D17DDEC00E5AB5A /* DLCardViewCollectionViewLayoutAttribute.swift in Sources */,
+				2899B6A61D17DD8600E5AB5A /* DLCardViewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

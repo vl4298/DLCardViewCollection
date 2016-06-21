@@ -16,7 +16,7 @@ class DLCardViewCollectionViewLayout: UICollectionViewLayout {
   var yOrigin: CGFloat = 200.0
   let xOrigin: CGFloat = 20.0
   var scale: CGFloat = 0.9
-  let visibleItem = 4
+  let visibleItem = 3
   var attributes = [UICollectionViewLayoutAttributes]()
   
   override func prepareLayout() {
@@ -51,10 +51,15 @@ class DLCardViewCollectionViewLayout: UICollectionViewLayout {
   }
   
   override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    for attr in attributes {
+      attr.zIndex = 0 - attr.indexPath.item
+    }
     return attributes
   }
   
   override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    let attri = attributes[indexPath.item]
+    attri.transform3D = CATransform3DTranslate(attri.transform3D, 0, 0, -CGFloat(attri.indexPath.item))
     return attributes[indexPath.item]
   }
   

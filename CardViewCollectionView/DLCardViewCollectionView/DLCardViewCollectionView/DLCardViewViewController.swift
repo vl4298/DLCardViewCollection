@@ -14,20 +14,45 @@ class DLCardViewViewController: UIViewController {
   var stackLayout: DLCardViewCollectionViewLayout!
   var flowLayout: DLCardViewCollectionViewFlowLayout!
   let cellIdentifier = "cellidentifier"
+  var dataSource = [UIColor]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    initDatasoruce()
     
     stackLayout = DLCardViewCollectionViewLayout()
     flowLayout = DLCardViewCollectionViewFlowLayout()
     collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: stackLayout)
     collectionView.dataSource = self
     collectionView.delegate = self
-    print(collectionView.center)
-    collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+    
+    collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+    
+    
+    collectionView.registerClass(DLCardViewCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
     //collectionView.backgroundColor = UIColor.blueColor()
     view.addSubview(collectionView)
     
+    let tap = UITapGestureRecognizer(target: self, action: #selector(changeLayout))
+    collectionView.addGestureRecognizer(tap)
+    
+  }
+  
+  private func initDatasoruce() {
+    for _ in 0..<10 {
+      let color = self.randomColor()
+      dataSource.append(UIColor(red: color.cor1, green: color.cor2, blue: color.cor3, alpha: 1.0))
+    }
+  }
+  
+  func changeLayout() {
+    if collectionView.collectionViewLayout.isKindOfClass(DLCardViewCollectionViewFlowLayout.self) {
+      stackLayout.invalidateLayout()
+      collectionView.setCollectionViewLayout(stackLayout, animated: true)
+    } else {
+      flowLayout.invalidateLayout()
+      collectionView.setCollectionViewLayout(flowLayout, animated: true)
+    }
   }
 }
 
@@ -45,20 +70,13 @@ extension DLCardViewViewController: UICollectionViewDataSource {
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath)
-    let color = self.randomColor()
-    cell.backgroundColor = UIColor(red: color.cor1, green: color.cor2, blue: color.cor3, alpha: 1.0)
+    cell.backgroundColor = dataSource[indexPath.item]
     return cell
   }
 }
 
 extension DLCardViewViewController: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    if collectionView.collectionViewLayout.isKindOfClass(DLCardViewCollectionViewFlowLayout.self) {
-      stackLayout.invalidateLayout()
-      collectionView.setCollectionViewLayout(stackLayout, animated: true)
-    } else {
-      flowLayout.invalidateLayout()
-      collectionView.setCollectionViewLayout(flowLayout, animated: true)
-    }
+    
   }
 }

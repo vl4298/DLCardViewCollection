@@ -9,5 +9,18 @@
 import UIKit
 
 class DLCardViewCollectionViewCell: UICollectionViewCell {
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    self.layer.speed = 0.5
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    self.layer.speed = 0.5
+  }
 
+  override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
+    super.applyLayoutAttributes(layoutAttributes)
+  }
 }

@@ -55,5 +55,4 @@ class DLCardViewCollectionViewLayout: UICollectionViewLayout {
     return attributes[indexPath.item]
   }
   
-  
 }

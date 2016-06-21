@@ -12,15 +12,18 @@ class DLCardViewViewController: UIViewController {
 
   var collectionView: UICollectionView!
   var stackLayout: DLCardViewCollectionViewLayout!
+  var flowLayout: DLCardViewCollectionViewFlowLayout!
   let cellIdentifier = "cellidentifier"
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     stackLayout = DLCardViewCollectionViewLayout()
+    flowLayout = DLCardViewCollectionViewFlowLayout()
     collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: stackLayout)
     collectionView.dataSource = self
-    
+    collectionView.delegate = self
+    print(collectionView.center)
     collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
     //collectionView.backgroundColor = UIColor.blueColor()
     view.addSubview(collectionView)
@@ -35,7 +38,6 @@ extension DLCardViewViewController: UICollectionViewDataSource {
   
   private func randomColor() -> (cor1: CGFloat, cor2: CGFloat, cor3: CGFloat) {
     let cor1: CGFloat = CGFloat(arc4random_uniform(255) + 1) / 255
-    print(cor1)
     let cor2: CGFloat = CGFloat(arc4random_uniform(255) + 1) / 255
     let cor3: CGFloat = CGFloat(arc4random_uniform(255) + 1) / 255
     return (cor1: cor1, cor2: cor2, cor3: cor3)
@@ -46,5 +48,17 @@ extension DLCardViewViewController: UICollectionViewDataSource {
     let color = self.randomColor()
     cell.backgroundColor = UIColor(red: color.cor1, green: color.cor2, blue: color.cor3, alpha: 1.0)
     return cell
+  }
+}
+
+extension DLCardViewViewController: UICollectionViewDelegate {
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    if collectionView.collectionViewLayout.isKindOfClass(DLCardViewCollectionViewFlowLayout.self) {
+      stackLayout.invalidateLayout()
+      collectionView.setCollectionViewLayout(stackLayout, animated: true)
+    } else {
+      flowLayout.invalidateLayout()
+      collectionView.setCollectionViewLayout(flowLayout, animated: true)
+    }
   }
 }

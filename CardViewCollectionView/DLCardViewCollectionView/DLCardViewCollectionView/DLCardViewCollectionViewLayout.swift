@@ -15,8 +15,8 @@ class DLCardViewCollectionViewLayout: UICollectionViewLayout {
   let numVisibleItems = 4
   var yOrigin: CGFloat = 200.0
   let xOrigin: CGFloat = 20.0
-  var translate: CGFloat = 20.0
   var scale: CGFloat = 0.9
+  let visibleItem = 4
   var attributes = [UICollectionViewLayoutAttributes]()
   
   override func prepareLayout() {
@@ -31,13 +31,16 @@ class DLCardViewCollectionViewLayout: UICollectionViewLayout {
     for index in 0..<numItems {
       let indexPath = NSIndexPath(forItem: index, inSection: 0)
       let attribute = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
-      attribute.frame = CGRect(x: xOrigin, y: yOrigin, width: itemSize, height: itemSize)
+      attribute.frame = CGRect(x: collectionView!.center.x - itemSize/2, y: yOrigin, width: itemSize, height: itemSize)
       transform = CATransform3DScale(CATransform3DIdentity, scale, scale , 1)
       attribute.transform3D = transform
       attribute.zIndex = 0 - index
-      translate += 20.0
       yOrigin -= 20.0
       scale -= 0.1
+      
+      if index > visibleItem {
+        attribute.hidden = true
+      }
       
       attributes.append(attribute)
     }
